@@ -7,7 +7,6 @@ let clearAll=document.getElementById('clearAll');
 let search=document.getElementById('search');
 let noteTitle = document.getElementById("noteTitle");
 let noteText = document.getElementById("noteText");
-let click = document.getElementById("click");
 
 
 // adding to evenLinstener funcatio on add notes button for adding a work
@@ -22,7 +21,7 @@ addNote.addEventListener("click", function () {
 // funcation for adding note by enter button
 noteTitle.addEventListener("keyup", (e)=>{
   if(e.keyCode===13){
-    addNote.click();
+    noteText.click();
   }
 })
 
@@ -68,10 +67,10 @@ function editbtn(currentElem){
     newTitle.classList="h5 card-title";
     newTitle.innerHTML=title.value;
     newDes.innerHTML=des.value;
+    newDes.classList="ms-2";
     // currentElem.parentElement.replaceChild(newTitle, title);
     currentElem.parentElement.replaceChild(newDes, des);
-    localStorage.setItem(title.value, des.value);
-
+    localStorage.setItem(title.innerText, des.value);
 
   }
 }
@@ -89,8 +88,8 @@ function showNotes() {
       <b class="h5 card-title ">${i+1}.&nbsp</b>
       <b class="h5 card-title">${properties[i]}</b>
       <p class="card-text ms-2" >${localStorage[properties[i]]}</p>
-      <button href="#" onclick="editbtn(this)" id="editbtn" class="mx-3 btn btn-warning">Edit</button>
-      <button href="#" onclick="deleteWork('${properties[i]}')" class=" btn btn-primary">Delete</button>
+      <button href="#" onclick="editbtn(this)" id="editbtn" class="m-2 btn btn-warning">Edit</button>
+      <button href="#" onclick="deleteWork('${properties[i]}')" class="m-2 btn btn-primary">Delete</button>
       </div>
       </div>`;
     }
